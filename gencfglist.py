@@ -20,5 +20,7 @@ if __name__ == "__main__":
     for fileItem in cfgList:
         if "datamgr" in fileItem:
             continue
-        fp.write('require("%s")\n' % fileItem[:-4])
+        if "meta" in fileItem:
+            continue
+        fp.write('require("PokemonBattle/data/luadata/%s")\n' % fileItem[:-4])
     fp.close()

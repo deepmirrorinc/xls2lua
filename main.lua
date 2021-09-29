@@ -127,7 +127,8 @@ function GenCfgRowCls(path, cfgFileName, cfgClsName, idName)
     fp:write(string.format("--function %s:PostProcess(xls, sheet, rowData)\n", cfgClsName))
     content = "\t-- 可以在此函数对 sheet.LUA_DATA (最终会导出此表) 中的数据做一些合法性检查\n" ..
               "\t-- return true\n" ..
-              "--end\n"
+              "--end\n" ..
+              string.format("return %s", cfgClsName)
     fp:write(content)
     fp:flush()
     fp:close()
